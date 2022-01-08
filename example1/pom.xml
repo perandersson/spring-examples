@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- We strictly don't need to use spring boot's parent, but it makes it easier to build
-         spring boot applications using it. -->
+         spring boot applications using it. Version 2.6.2 is the latest version of spring boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
