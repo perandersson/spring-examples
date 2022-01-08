@@ -4,6 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- We strictly don't need to use spring boot's parent, but it makes it easier to build
+         spring boot applications using it. -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -11,16 +13,29 @@
         <relativePath/>
     </parent>
 
+    <!-- GroupID can be anything, but is commonly your company's domain name or something similar -->
     <groupId>se.westcoastcode</groupId>
+
+    <!-- ArtifactID can be anything, but is normally the name of your application -->
     <artifactId>example1</artifactId>
+
+    <!-- Version -->
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <!-- Reserved property used by maven to know what version of java the source code is
+             written in -->
         <maven.compiler.source>16</maven.compiler.source>
+
+        <!-- Reserved property used by maven to know what version it should build the bytecode
+             into. The jar file will be compatible with JRE 16 and above -->
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
 
     <dependencies>
+        <!-- We are dependent on spring boot in this example. The version of the dependency is
+             derived from the <parent> configuration in it's <dependencyManagement> section
+         -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -29,6 +44,13 @@
 
     <build>
         <plugins>
+            <!-- Plugin that helps us to build the target java application. It configures your
+                 built jar-file so that it knows which main function to call on startup. It also helps
+                 solve dependency injection, code generation and other compile-time magic part of the spring
+                 library.
+
+                 Version is derived from spring boot's <parent> configuration.
+             -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
